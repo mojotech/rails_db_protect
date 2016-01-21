@@ -1,0 +1,21 @@
+task protect_database: :environment do
+  error_msg = "\e[31m" +
+              "WARNING: This action will cause permanent data loss. " +
+              "To allow this action and permanently lose your data, " +
+              "set ENV['ALLOW_DANGEROUS_TASKS'] = 'true'" +
+              "\e[0m"
+
+  raise error_msg unless allow_dangerous_tasks?
+end
+
+def allow_dangerous_tasks?
+  Rails.env.development? || Rails.env.test? || ENV['ALLOW_DANGEROUS_TASKS'] == 'true'
+end
+
+DANGEROUS_TASKS = %w[ db:setup db:reset db:drop db:create db:schema:load ]
+
+DANGEROUS_TASKS.each do |task|
+  Rake::Task[task].enhance do
+    Rake::Task[:protect_database].execute
+  end
+end

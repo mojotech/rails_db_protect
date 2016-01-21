@@ -1,0 +1,18 @@
+namespace :db do
+  task setup: :environment do
+  end
+
+  task reset: :environment do
+  end
+
+  task drop: :environment do
+  end
+
+  task create: :environment do
+  end
+
+  namespace :schema do
+    task load: :environment do
+    end
+  end
+end
