@@ -1,10 +1,16 @@
 # RailsDbProtect
 
-Protect your Rails production databases from destructive rake tasks:
+Protect your Rails production databases from the following destructive tasks:
 
 ```bash
 db:setup db:reset db:drop db:create db:schema:load
 ```
+
+## Usage
+
+Add the gem and you're done!
+
+To bypass the protection in a production environment, add `ENV['ALLOW_DANGEROUS_TASKS'] = 'true'` to your environment.
 
 ## Installation
 
@@ -14,21 +20,6 @@ Add this line to your application's Gemfile:
 gem 'rails_db_protect'
 ```
 
-And then install:
-
-```bash
-$ bundle install
-```
-
-Or install it yourself as:
-
-```bash
-$ gem install rails_db_protect
-```
-
-## Usage
-
-Just drop it in and you will not be able to run the dangerous tasks in production environments. To bypass this in, say, a staging environment, add `ENV['ALLOW_DANGEROUS_TASKS'] = 'true'` to your environment.
 
 ## Contributing
 
