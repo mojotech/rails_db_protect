@@ -1,3 +1,5 @@
+**This project is deprecated as this functionality comes out of the box with Rails 5**
+
 # RailsDbProtect
 
 Protect your Rails production databases from the following destructive tasks:
